@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player';
 import { OnProgressProps } from 'react-player/base';
 
 import Modal from '@/app/components/modal/modal';
-import ModalContentPaid from '@/app/components/modal/modal-content-paid';
+import ModalContentInBuilding from '@/app/components/modal/modal-content-buildin';
 import useAxios from '@/app/hooks/useAxios';
 
 interface VideoTranscriptionProps {
@@ -120,7 +120,7 @@ export default function VideoPage({
 
   return (
     <main>
-      <div className='m-auto mt-4 flex w-[90%] justify-between'>
+      <div className='m-auto mt-4 flex max-w-[90%] justify-between'>
         <h3 className='text-lg'>{data?.body[0].title}</h3>
         <span
           onClick={() => setModalResourcesPaidState(true)}
@@ -153,9 +153,10 @@ export default function VideoPage({
             closeModal={closeModal}
             word={modalState.word}
           />
-          <ModalContentPaid
+          <ModalContentInBuilding
             state={modalResoucePaidState}
             closeModal={closeModalResoucePaid}
+            word=''
           />
           {data?.body[0].subtitles.en.map((enText, index) => {
             const words = getWordsOnClick(enText.text);
