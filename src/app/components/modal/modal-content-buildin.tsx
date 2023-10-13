@@ -41,7 +41,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                   <span className='justify-normal m-auto'>
                     <div className='m-auto w-[100%] text-center'>
                       <h3 className='mb-4'>
-                        Ops... recurso em desenvolvimento. 🏗️
+                        Ops... funcionalidade em desenvolvimento. 🏗️
                       </h3>
                       <p>
                         Vocẽ está usando uma demo do nosso sftware. Ainda
