@@ -22,7 +22,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <Link href='/pages/historico'>Histórico de vídeos</Link>
             </li>
             <li>
-              <Link href='/videos'>Tutorial</Link>
+              <Link href='/pages/tutorial'>Tutorial</Link>
             </li>
           </ul>
 
