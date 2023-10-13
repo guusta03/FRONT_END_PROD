@@ -40,10 +40,16 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
   };
 
   function speakWordModal() {
-    const textToBeSpoken = new SpeechSynthesisUtterance(word);
-    textToBeSpoken.lang = 'en-US';
-    textToBeSpoken.rate = speechRate;
-    window.speechSynthesis.speak(textToBeSpoken);
+    const speechRate = 1;
+
+    if ('speechSynthesis' in window) {
+      const textToBeSpoken = new SpeechSynthesisUtterance(word);
+      textToBeSpoken.lang = 'en-US';
+      textToBeSpoken.rate = speechRate;
+      window.speechSynthesis.speak(textToBeSpoken);
+    } else {
+      console.log('A API de síntese de fala não é suportada neste navegador.');
+    }
   }
 
   function speakWordWhenModalIsOpen() {
