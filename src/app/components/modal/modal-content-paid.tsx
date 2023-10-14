@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+'use client';
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react';
 import { Fragment } from 'react';
@@ -66,7 +67,9 @@ export default function ModalContentPaid({ state, closeModal }: ModalProps) {
                       {plans.map((plan, index) => (
                         <span
                           key={index}
-                          className={`cursor-pointer rounded-md border pb-5 pl-4 pr-3 pt-5 text-center ${plan.market ? 'bg-[#5959e4] text-slate-50' : ''}`}
+                          className={`cursor-pointer rounded-md border pb-5 pl-4 pr-3 pt-5 text-center ${
+                            plan.market ? 'bg-[#5959e4] text-slate-50' : ''
+                          }`}
                         >
                           <p>{plan.market ? plan.market : ''}</p>
                           <a href='https://buy.stripe.com/test_28obJZ1FQaNs3w48ww'>
