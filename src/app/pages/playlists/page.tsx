@@ -87,19 +87,18 @@ export default function VideoPage() {
   function nextPagePlaylistYouTube() {
     const { data } = useAxios({
       method: 'POST',
-      url: 'https://www.googleapis.com/youtube/v3/playlists?pageToken=[nextPageTokenFrom previous request]'
-    })
-
+      url: 'https://www.googleapis.com/youtube/v3/playlists?pageToken=[nextPageTokenFrom previous request]',
+    });
   }
 
   return (
-    <main className='flex flex-col'>
+    <main className='flex flex-col justify-center align-middle'>
       <span className='m-auto mt-10 w-[78.5%] flex-col justify-start'>
-        <div className='w-[70%] flex m-auto'>
+        <div className='m-auto flex w-[70%] justify-center text-center'>
           <h1 className='mb-6'>Aprenda inglês com vídeos do YouTube</h1>
           <Info />
         </div>
-        <div className='flex items-center w-[78.5%] m-auto'>
+        <div className='m-auto flex w-[78.5%] items-center'>
           <input
             className='mr-2 h-10 w-[100%] rounded border border-b-2 border-gray-300 text-left outline-0'
             title='search youtube videos'
@@ -112,7 +111,7 @@ export default function VideoPage() {
           </Button>
         </div>
       </span>
-      <span className='m-auto mt-10 flex w-[78.5%]'>
+      <span className='m-auto mt-10 flex justify-center sm:w-[90] sm:justify-start md:w-[80%]'>
         {textButtonList.map((item, index) => (
           <TextButton
             key={index}
@@ -129,7 +128,7 @@ export default function VideoPage() {
           </TextButton>
         ))}
       </span>
-      <div className='m-auto mb-10 mt-10 grid w-[78.5%] grid-cols-4'>
+      <div className='m-auto mb-10 mt-10 grid max-w-[78.5%] sm:grid-cols-4'>
         {data?.items.map((item: VideoItem, index: number) => (
           <div key={index} onClick={() => handleGetVideoId(item.id)}>
             {item.snippet.thumbnails.maxres && (
@@ -142,8 +141,7 @@ export default function VideoPage() {
           </div>
         ))}
       </div>
-
-      <span className='m-auto mb-4 w-[78%] text-sm text-gray-700 dark:text-gray-400'>
+      <span className='m-auto mb-4 w-[30%] text-sm text-gray-700 dark:text-gray-400'>
         Showing{' '}
         <span className='font-semibold text-gray-900 dark:text-white'>{1}</span>{' '}
         to{' '}
