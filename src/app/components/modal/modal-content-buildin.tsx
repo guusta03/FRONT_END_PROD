@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+'use client';
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react';
 import { Fragment } from 'react';
@@ -38,7 +39,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                 leaveTo='opacity-0 scale-95'
               >
                 <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
-                  <span className='justify-normal m-auto'>
+                  <span className='m-auto justify-normal'>
                     <div className='m-auto w-[100%] text-center'>
                       <h3 className='mb-4'>
                         Ops... funcionalidade em desenvolvimento. 🏗️
