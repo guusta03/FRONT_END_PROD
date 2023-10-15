@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { Bell, SunMoon } from 'lucide-react';
+import { Bell, MenuIcon, SunMoon } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 import { ImGoogle } from 'react-icons/im';
@@ -17,7 +17,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
     <main>
       <header className='sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-white bg-gradient-to-b px-4 dark:text-gray-600'>
         <div className='m-auto flex w-11/12 items-center justify-between'>
-          <ul className='flex w-96 items-center justify-around'>
+          <ul className='hidden items-center justify-around sm:flex sm:w-96'>
             <li>
               <Link href='/pages/playlists'>Vídeos</Link>
             </li>
@@ -28,7 +28,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <Link href='/pages/tutorial'>Tutorial</Link>
             </li>
           </ul>
-
+          <MenuIcon className='sm:hidden' />
           <div className='flex items-center justify-end space-x-2'>
             {/* <a
               target='_blank'
