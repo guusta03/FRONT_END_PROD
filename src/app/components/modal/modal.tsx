@@ -1,7 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+'use client';
+
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react';
 import { Fragment } from 'react';
+
+import logger from '@/lib/logger';
 
 import TextButton from '@/components/buttons/TextButton';
 
@@ -40,15 +44,13 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
   };
 
   function speakWordModal() {
-    const speechRate = 1;
-
     if ('speechSynthesis' in window) {
       const textToBeSpoken = new SpeechSynthesisUtterance(word);
       textToBeSpoken.lang = 'en-US';
       textToBeSpoken.rate = speechRate;
       window.speechSynthesis.speak(textToBeSpoken);
     } else {
-      console.log('A API de síntese de fala não é suportada neste navegador.');
+      logger('A API de síntese de fala não é suportada neste navegador.');
     }
   }
 
@@ -106,7 +108,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                       </TextButton>
                     </div>
                   </span>
-                  <div className='mt-2'>
+                  <div className='mt-2 rounded-sm border border-slate-300 p-3'>
                     <p className='text-sm text-gray-500'>
                       {loading ? (
                         <div>Carregando...</div>
