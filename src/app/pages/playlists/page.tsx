@@ -128,7 +128,7 @@ export default function VideoPage() {
           </TextButton>
         ))}
       </span>
-      <div className='m-auto mb-10 mt-10 grid max-w-[78.5%] sm:grid-cols-4'>
+      <div className='m-auto mb-10 mt-10 grid max-w-[78.5%] sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
         {data?.items.map((item: VideoItem, index: number) => (
           <div key={index} onClick={() => handleGetVideoId(item.id)}>
             {item.snippet.thumbnails.maxres && (
