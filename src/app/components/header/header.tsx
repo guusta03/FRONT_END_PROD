@@ -2,8 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import { Bell, SunMoon } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
+import { ImGoogle } from 'react-icons/im';
 
 import { cn } from '@/lib/utils';
 
@@ -12,7 +14,7 @@ import { buttonVariants } from '@/components/buttons/Button';
 export default function Header({ children }: { children: React.ReactNode }) {
   return (
     <main>
-      <header className=' sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-white bg-gradient-to-b px-4'>
+      <header className='sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-white bg-gradient-to-b px-4 dark:text-gray-600'>
         <div className='m-auto flex w-11/12 items-center justify-between'>
           <ul className='flex w-96 items-center justify-around'>
             <li>
@@ -41,6 +43,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
               rel='noopener noreferrer'
               className={cn(buttonVariants({ variant: 'outline' }))}
             >
+              <ImGoogle />
               <span className='ml-2 hidden md:flex'>Login</span>
             </a>
             <a
@@ -50,6 +53,8 @@ export default function Header({ children }: { children: React.ReactNode }) {
             >
               <span className='hidden text-white sm:block'>Comunidade</span>
             </a>
+            <SunMoon />
+            <Bell />
           </div>
         </div>
       </header>
