@@ -119,81 +119,83 @@ export default function VideoPage({
   };
 
   return (
-    <main className='m-w-[90%] m-auto'>
-      <div className='m-auto mt-4 flex max-w-[90%] justify-between'>
-        <h3 className='text-lg'>{data?.body[0].title}</h3>
-        <span
-          onClick={() => setModalResourcesPaidState(true)}
-          className='w-30 flex cursor-pointer items-center justify-around border pb-2 pl-6 pr-6 pt-2'
-        >
-          <div className='ml-22'>Traduzir</div>
-          <RiTranslate2 />
-        </span>
-      </div>
-      <div className='m-auto mb-10 mt-4 flex w-[90%] justify-center rounded-md'>
-        <span className='rounded-md rounded-b-lg bg-slate-600'>
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videoId}`}
-            height={480}
-            width={800}
-            playing={isPlaying}
-            playbackRate={playbackRateVideo}
-            controls
-            style={{
-              width: '234px',
-            }}
-            onProgress={handleVideoProgress}
-            ref={PlayerRef}
-          />
-        </span>
+    <main className='m-w-[100%] m-auto'>
+      <div className='m-auto mt-4 max-w-[83%]'>
+        <div className='m-auto flex max-w-[95%] justify-between'>
+          <h3 className='text-lg'>{data?.body[0].title}</h3>
+          <span
+            onClick={() => setModalResourcesPaidState(true)}
+            className='w-30 flex cursor-pointer items-center justify-around border pb-2 pl-6 pr-6 pt-2'
+          >
+            <div className='ml-22'>Traduzir</div>
+            <RiTranslate2 />
+          </span>
+        </div>
+        <div className='m-auto mb-10 mt-4 flex h-[80vh] max-w-[100%] justify-center rounded-md'>
+          <span className='h-[100vh] rounded-md rounded-b-lg'>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${videoId}`}
+              playing={isPlaying}
+              playbackRate={playbackRateVideo}
+              controls
+              height={400}
+              style={{
+                width: '100%',
+                height: '100vh',
+              }}
+              onProgress={handleVideoProgress}
+              ref={PlayerRef}
+            />
+          </span>
 
-        <div className='ml-8 h-[30.2rem] w-4/12 cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 p-3'>
-          <Modal
-            state={modalState.state}
-            closeModal={closeModal}
-            word={modalState.word}
-          />
-          <ModalContentInBuilding
-            state={modalResoucePaidState}
-            closeModal={closeModalResoucePaid}
-            word=''
-          />
-          {data?.body[0].subtitles.en.map((enText, index) => {
-            const words = getWordsOnClick(enText.text);
-            const isSubtitleHighlighted = currentSubtitleIndex === index;
-            return (
-              <div
-                key={index}
-                onClick={() => handleSeekMouseClick(enText.start)}
-                className={`rounded-[2px] p-1 ${
-                  isSubtitleHighlighted ? 'bg-[#DBEAFE]' : ''
-                }`}
-              >
-                {timeArray.map((item, index) => (
-                  <span
-                    key={index}
-                    className='bg-[#798FC2] p-[3px] text-sm text-white'
-                  >
-                    {item}
-                  </span>
-                ))}
-                {words.map((word, wordIndex) => (
-                  <>
-                    <span>{timeArray.map((time) => time)}</span>
+          <div className='ml-8 h-[70vh] max-w-[100%] cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 p-3'>
+            <Modal
+              state={modalState.state}
+              closeModal={closeModal}
+              word={modalState.word}
+            />
+            <ModalContentInBuilding
+              state={modalResoucePaidState}
+              closeModal={closeModalResoucePaid}
+              word=''
+            />
+            {data?.body[0].subtitles.en.map((enText, index) => {
+              const words = getWordsOnClick(enText.text);
+              const isSubtitleHighlighted = currentSubtitleIndex === index;
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleSeekMouseClick(enText.start)}
+                  className={`rounded-[2px] p-1 ${
+                    isSubtitleHighlighted ? 'bg-[#DBEAFE]' : ''
+                  }`}
+                >
+                  {timeArray.map((item, index) => (
                     <span
-                      key={wordIndex}
-                      onClick={() =>
-                        handleChangeModalStateOnClick({ state: true, word })
-                      }
-                      className='cursor-pointer rounded-md p-[1px] hover:bg-[#e9ecf1]'
+                      key={index}
+                      className='bg-[#798FC2] p-[3px] text-sm text-white'
                     >
-                      {word}{' '}
+                      {item}
                     </span>
-                  </>
-                ))}
-              </div>
-            );
-          })}
+                  ))}
+                  {words.map((word, wordIndex) => (
+                    <>
+                      <span>{timeArray.map((time) => time)}</span>
+                      <span
+                        key={wordIndex}
+                        onClick={() =>
+                          handleChangeModalStateOnClick({ state: true, word })
+                        }
+                        className='cursor-pointer rounded-md p-[1px] hover:bg-[#e9ecf1]'
+                      >
+                        {word}{' '}
+                      </span>
+                    </>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </main>
