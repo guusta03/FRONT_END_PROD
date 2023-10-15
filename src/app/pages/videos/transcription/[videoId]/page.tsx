@@ -131,24 +131,18 @@ export default function VideoPage({
             <RiTranslate2 />
           </span>
         </div>
-        <div className='m-auto mb-10 mt-4 flex h-[80vh] max-w-[100%] justify-center rounded-md'>
-          <span className='h-[100vh] rounded-md rounded-b-lg'>
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${videoId}`}
-              playing={isPlaying}
-              playbackRate={playbackRateVideo}
-              controls
-              height={400}
-              style={{
-                width: '100%',
-                height: '100vh',
-              }}
-              onProgress={handleVideoProgress}
-              ref={PlayerRef}
-            />
-          </span>
+        <div className='m-auto mb-10 mt-4 flex h-[80vh] max-w-[100%] justify-center rounded-md sm:flex-col md:flex-row'>
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${videoId}`}
+            playing={isPlaying}
+            playbackRate={playbackRateVideo}
+            controls
+            height={400}
+            onProgress={handleVideoProgress}
+            ref={PlayerRef}
+          />
 
-          <div className='ml-8 h-[70vh] max-w-[100%] cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 p-3'>
+          <div className='ml-8 h-[vh] max-w-[100%] cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 p-3 sm:mt-5 sm:flex-col md:mt-0 md:flex-row'>
             <Modal
               state={modalState.state}
               closeModal={closeModal}

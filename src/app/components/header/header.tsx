@@ -6,6 +6,7 @@ import { Bell, SunMoon } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 import { ImGoogle } from 'react-icons/im';
+import { RiDiscordLine } from 'react-icons/ri';
 
 import { cn } from '@/lib/utils';
 
@@ -51,7 +52,10 @@ export default function Header({ children }: { children: React.ReactNode }) {
               target='_blank'
               className={cn(buttonVariants())}
             >
-              <span className='hidden text-white sm:block'>Comunidade</span>
+              <RiDiscordLine color='#FFFF' />
+              <span className=' ml-2 hidden text-white sm:block'>
+                Comunidade
+              </span>
             </a>
             <SunMoon />
             <Bell />
