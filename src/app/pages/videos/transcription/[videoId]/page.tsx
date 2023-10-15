@@ -99,6 +99,19 @@ export default function VideoPage({
     setIsPlaying(false);
   };
 
+  function verifyLenghtDisplay() {
+    const sreenLenght = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    if (screenHeight <= 768 && sreenLenght <= 1024) {
+      return (
+        <h2>
+          Ops... nosso sistema é projetado somente para dispositivos grandes
+        </h2>
+      );
+    }
+  }
+
   const convertMillisecondsToMinutes = (time: any) => {
     for (const times of time) {
       const removeDots = times.start.replace('.', '');
@@ -192,6 +205,7 @@ export default function VideoPage({
           </div>
         </div>
       </div>
+      {verifyLenghtDisplay()}
     </main>
   );
 }
