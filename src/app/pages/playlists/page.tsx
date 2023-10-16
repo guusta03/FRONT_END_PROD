@@ -78,7 +78,7 @@ export default function VideoPage() {
     const startIndex = url.indexOf('v=');
     if (startIndex !== -1) {
       const videoID = url.substring(startIndex + 2);
-      router.push(`videos/transcription/${videoID}}`);
+      router.push(`videos/transcription/${videoID}`);
     } else {
       setYouTubeVideId('');
     }
