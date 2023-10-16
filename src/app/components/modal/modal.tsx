@@ -26,7 +26,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
   );
 
   const { data, loading } = useAxios<{ body: string }>({
-    url: `http://https://silly-tan-jersey.cyclic.app/api/meaning/word/${word}`,
+    url: `https://silly-tan-jersey.cyclic.app/api/meaning/word/${word}`,
     method: 'GET',
   });
 
