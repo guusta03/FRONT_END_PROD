@@ -5,7 +5,6 @@
 import { Bell, MenuIcon, SunMoon, User } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
-import { RiTranslate } from 'react-icons/ri';
 
 import { cn } from '@/lib/utils';
 
@@ -28,7 +27,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
             </li>
           </ul>
           <MenuIcon className='hidden' />
-          <div className='flex items-center justify-end space-x-2'>
+          <div className='ml-6 flex items-center justify-end space-x-2'>
             <a
               target='_blank'
               href='/'
@@ -38,16 +37,11 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <User style={{ width: 20, height: 20 }} />
               <span className='ml-2 hidden md:flex'>Login</span>
             </a>
-            <a
-              href='https://discord.com/invite/english'
-              target='_blank'
-              className={cn(buttonVariants())}
-            >
-              <RiTranslate color='#FFFF' />
-              <span className=' ml-2 hidden text-white sm:block'>
-                Estou Aprendendo
-              </span>
-            </a>
+            {/* <a target='_blank' className={cn(buttonVariants())}>
+              <RiTranslate color='#FFFF' className='text-slate-50' />
+
+              <Tooltip message='Ingles'>Estou aprendendo</Tooltip>
+            </a> */}
             {/* <a
               href='https://discord.com/invite/english'
               target='_blank'
