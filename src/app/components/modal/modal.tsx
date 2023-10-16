@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
@@ -20,14 +21,24 @@ interface ModalProps {
 export default function Modal({ state, closeModal, word }: ModalProps) {
   const [selectedSpeed, setSelectedSpeed] = React.useState('Normal');
   const [speechRate, setSpeechRate] = React.useState(1);
+  const [meaningData, setMeaningData] = React.useState<{ body: string } | null>(
+    null
+  );
+
   const { data, loading } = useAxios<{ body: string }>({
-    url: `https://silly-tan-jersey.cyclic.app/api/meaning/word/${word}`,
+    url: `http://localhost:5000/api/meaning/word/${word}`,
     method: 'GET',
   });
 
   React.useEffect(() => {
     speakWordWhenModalIsOpen();
   }, [state, word]);
+
+  React.useEffect(() => {
+    if (data) {
+      setMeaningData(data);
+    }
+  }, [data]);
 
   const handleSpeedChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
@@ -110,10 +121,10 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                   </span>
                   <div className='mt-2 rounded-sm border border-slate-300 p-3'>
                     <p className='text-sm text-gray-500'>
-                      {loading ? (
+                      {!meaningData ? (
                         <div>Carregando... isso pode demorar um pouco</div>
                       ) : (
-                        data?.body.replace(/\\n/g, '<br />')
+                        meaningData.body.replace(/\\n/g, '<br />')
                       )}
                     </p>
                   </div>
@@ -122,7 +133,10 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={closeModal}
+                      onClick={() => {
+                        setMeaningData(null);
+                        closeModal();
+                      }}
                     >
                       Entendi, obrigado!
                     </button>
