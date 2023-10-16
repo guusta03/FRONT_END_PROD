@@ -141,7 +141,7 @@ export default function VideoPage() {
           </div>
         ))}
       </div>
-      <span className='m-auto mb-4 w-[30%] text-sm text-gray-700 dark:text-gray-400'>
+      {/* <span className='m-auto mb-4 w-[30%] text-sm text-gray-700 dark:text-gray-400'>
         Showing{' '}
         <span className='font-semibold text-gray-900 dark:text-white'>{1}</span>{' '}
         to{' '}
@@ -195,7 +195,7 @@ export default function VideoPage() {
             />
           </svg>
         </a>
-      </div>
+      </div> */}
     </main>
   );
 }
