@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html className='dark'>
-      <body className='bg-[]'>
+      <body>
         <Header>{children}</Header>
       </body>
     </html>
