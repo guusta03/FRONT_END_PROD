@@ -111,7 +111,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                   <div className='mt-2 rounded-sm border border-slate-300 p-3'>
                     <p className='text-sm text-gray-500'>
                       {loading ? (
-                        <div>Carregando...</div>
+                        <div>Carregando... isso pode demorar um pouco</div>
                       ) : (
                         data?.body.replace(/\\n/g, '<br />')
                       )}
