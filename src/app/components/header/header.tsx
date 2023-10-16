@@ -2,11 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { Bell, MenuIcon, SunMoon } from 'lucide-react';
+import { Bell, MenuIcon, SunMoon, User } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
-import { ImGoogle } from 'react-icons/im';
-import { RiDiscordLine } from 'react-icons/ri';
+import { RiTranslate } from 'react-icons/ri';
 
 import { cn } from '@/lib/utils';
 
@@ -16,8 +15,8 @@ export default function Header({ children }: { children: React.ReactNode }) {
   return (
     <main>
       <header className='sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-white bg-gradient-to-b px-4 dark:text-gray-600'>
-        <div className='m-auto flex w-11/12 items-center justify-between'>
-          <ul className='hidden items-center justify-around sm:flex sm:w-96'>
+        <div className='m-auto flex w-11/12 items-center justify-end sm:justify-between'>
+          <ul className='hidden items-center justify-end sm:flex sm:w-96 sm:justify-around'>
             <li>
               <Link href='/pages/playlists'>Vídeos</Link>
             </li>
@@ -28,26 +27,28 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <Link href='/pages/tutorial'>Tutorial</Link>
             </li>
           </ul>
-          <MenuIcon className='sm:hidden' />
+          <MenuIcon className='hidden' />
           <div className='flex items-center justify-end space-x-2'>
-            {/* <a
-              target='_blank'
-              href='https://github.com/vercel/nextjs-ai-chatbot/'
-              rel='noopener noreferrer'
-              className={cn(buttonVariants({ variant: 'outline' }))}
-            >
-              <span className='hidden sm:block'>Torne-se um apoiador!</span>
-            </a> */}
             <a
               target='_blank'
               href='/'
               rel='noopener noreferrer'
               className={cn(buttonVariants({ variant: 'outline' }))}
             >
-              <ImGoogle />
+              <User style={{ width: 20, height: 20 }} />
               <span className='ml-2 hidden md:flex'>Login</span>
             </a>
             <a
+              href='https://discord.com/invite/english'
+              target='_blank'
+              className={cn(buttonVariants())}
+            >
+              <RiTranslate color='#FFFF' />
+              <span className=' ml-2 hidden text-white sm:block'>
+                Estou Aprendendo
+              </span>
+            </a>
+            {/* <a
               href='https://discord.com/invite/english'
               target='_blank'
               className={cn(buttonVariants())}
@@ -56,7 +57,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <span className=' ml-2 hidden text-white sm:block'>
                 Comunidade
               </span>
-            </a>
+            </a> */}
             <SunMoon />
             <Bell />
           </div>
