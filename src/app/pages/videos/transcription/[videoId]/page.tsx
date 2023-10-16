@@ -111,7 +111,6 @@ export default function VideoPage({
       );
     }
   }
-
   const convertMillisecondsToMinutes = (time: any) => {
     for (const times of time) {
       const removeDots = times.start.replace('.', '');
