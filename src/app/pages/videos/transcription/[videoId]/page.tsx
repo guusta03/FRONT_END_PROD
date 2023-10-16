@@ -40,6 +40,7 @@ export default function VideoPage({
   const [isPlaying, setIsPlaying] = React.useState(true);
   const [playbackRateVideo, setPlayback] = React.useState(1);
   const timeArray: string[] = [];
+
   function closeModal() {
     setModalState({ state: false, word: '' });
     setIsPlaying(true);

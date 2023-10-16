@@ -9,14 +9,14 @@ type GridCardProps = {
 
 export default function GridCard({ title, content, thumb }: GridCardProps) {
   return (
-    <div className='w-65 h-64 cursor-pointer rounded-md p-2 hover:bg-[#F7F2FF] transition ease-in-out delay-20'>
+    <div className='w-50 delay-20 h-64 cursor-pointer rounded-md p-2 transition ease-in-out hover:bg-[#F7F2FF]'>
       <div className='h-36 w-[100%]'>
         <Image
           src={thumb}
           className='h-36 w-[100%] rounded-md'
           alt={title}
-          width={500}
-          height={500}
+          width={900}
+          height={900}
         />
       </div>
       <p className='text-start'>{title}</p>
