@@ -5,14 +5,23 @@
 import { Bell, MenuIcon, SunMoon, User } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
+import { useRecoilState } from 'recoil';
 
+import { hasTokenInLocalStorage } from '@/lib/helper';
 import { cn } from '@/lib/utils';
 
 import { buttonVariants } from '@/components/buttons/Button';
 
 import Tooltip from '@/app/components/tooltip/tooltip';
+import { isLogged } from '@/app/state/isLogged';
 
 export default function Header({ children }: { children: React.ReactNode }) {
+  const [hasTokenSaved, setHasTokenSaved] = useRecoilState(isLogged);
+
+  React.useEffect(() => {
+    setHasTokenSaved(hasTokenInLocalStorage('guga:user'));
+  }, []);
+
   return (
     <main>
       <header className='sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-white bg-gradient-to-b px-4 dark:text-gray-600'>
@@ -30,15 +39,24 @@ export default function Header({ children }: { children: React.ReactNode }) {
           </ul>
           <MenuIcon className='hidden' />
           <div className='ml-6 flex items-center justify-end space-x-2'>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              className={cn(buttonVariants({ variant: 'outline' }))}
-            >
-              <Tooltip message=''>Entrar</Tooltip>
+            {!hasTokenSaved && (
+              <span className={cn(buttonVariants({ variant: 'outline' }))}>
+                <Tooltip message=''>Entrar</Tooltip>
 
-              <User style={{ width: 20, height: 20 }} />
-            </a>
+                <User style={{ width: 20, height: 20 }} />
+              </span>
+            )}
+            {hasTokenSaved && (
+              <span
+                className={cn(buttonVariants({ variant: 'outline' }))}
+                onClick={() => {
+                  localStorage.removeItem('guga:user');
+                  setHasTokenSaved(false);
+                }}
+              >
+                Sair
+              </span>
+            )}
 
             {/* <a target='_blank' className={cn(buttonVariants())}>
               <RiTranslate color='#FFFF' className='text-slate-50' />
