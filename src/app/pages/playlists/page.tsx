@@ -98,7 +98,7 @@ export default function VideoPage() {
           <h1 className='mb-6'>Aprenda inglês com vídeos do YouTube</h1>
           <Info />
         </div>
-        <div className='m-auto flex w-[78.5%] items-center'>
+        <div className='m-auto flex max-w-[70.5%] sm:items-center lg:w-[60%]'>
           <input
             className='mr-2 h-10 w-[100%] rounded border border-b-2 border-gray-300 text-left outline-0'
             title='search youtube videos'
@@ -111,7 +111,7 @@ export default function VideoPage() {
           </Button>
         </div>
       </span>
-      <span className='m-auto mt-10 flex justify-center sm:w-[90] sm:justify-start md:w-[80%]'>
+      <span className='m-auto mt-10 flex justify-center sm:w-[90] md:w-[80%]'>
         {textButtonList.map((item, index) => (
           <TextButton
             key={index}
