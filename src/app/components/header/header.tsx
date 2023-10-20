@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils';
 
 import { buttonVariants } from '@/components/buttons/Button';
 
+import Tooltip from '@/app/components/tooltip/tooltip';
+
 export default function Header({ children }: { children: React.ReactNode }) {
   return (
     <main>
@@ -30,18 +32,19 @@ export default function Header({ children }: { children: React.ReactNode }) {
           <div className='ml-6 flex items-center justify-end space-x-2'>
             <a
               target='_blank'
-              href='/'
               rel='noopener noreferrer'
               className={cn(buttonVariants({ variant: 'outline' }))}
             >
+              <Tooltip message=''>Entrar</Tooltip>
+
               <User style={{ width: 20, height: 20 }} />
-              <span className='ml-2 hidden md:flex'>Login</span>
             </a>
+
             {/* <a target='_blank' className={cn(buttonVariants())}>
               <RiTranslate color='#FFFF' className='text-slate-50' />
-
               <Tooltip message='Ingles'>Estou aprendendo</Tooltip>
             </a> */}
+
             {/* <a
               href='https://discord.com/invite/english'
               target='_blank'
