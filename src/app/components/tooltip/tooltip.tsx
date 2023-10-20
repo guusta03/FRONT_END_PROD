@@ -67,7 +67,7 @@ function LoginForm() {
   };
 
   return (
-    <form>
+    <div>
       <input
         className='m-auto mb-3 h-9 rounded-md border border-zinc-200 placeholder:text-sm'
         ref={mailRef}
@@ -98,6 +98,6 @@ function LoginForm() {
         <ImGoogle />
         <p className='ml-6'>Entrar com google</p>
       </div>
-    </form>
+    </div>
   );
 }
