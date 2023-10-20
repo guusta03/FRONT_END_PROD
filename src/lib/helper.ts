@@ -1,8 +1,9 @@
-export function getFromLocalStorage(key: string): string | null {
+export function hasTokenInLocalStorage(key: string): boolean {
   if (typeof window !== 'undefined') {
-    return window.localStorage.getItem(key);
+    const token = window.localStorage.getItem(key);
+    return !!token;
   }
-  return null;
+  return false;
 }
 
 export function getFromSessionStorage(key: string): string | null {
