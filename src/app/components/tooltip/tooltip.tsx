@@ -51,7 +51,7 @@ function LoginForm() {
       const email = mailRef.current.value;
       const password = passwordRef.current.value;
 
-      const { data } = useAxios<{ accessToken: string }>({
+      const { data } = useAxios<any>({
         method: 'POST',
         url: 'http://localhost:5000/login',
         bodyData: {
