@@ -7,7 +7,7 @@ type GridCardProps = {
   thumb: string;
 };
 
-export default function GridCard({ title, content, thumb }: GridCardProps) {
+export default function GridCard({ title, thumb }: GridCardProps) {
   return (
     <div className='w-50 delay-20 h-64 cursor-pointer rounded-md p-2 transition ease-in-out hover:bg-[#F7F2FF]'>
       <div className='h-36 w-[100%]'>
@@ -20,7 +20,6 @@ export default function GridCard({ title, content, thumb }: GridCardProps) {
         />
       </div>
       <p className='text-start'>{title}</p>
-      <p>{content}</p>
     </div>
   );
 }

@@ -61,14 +61,14 @@ export default function PlayListPage({
               <GridCard
                 thumb={item.snippet.thumbnails.maxres.url}
                 title={item.snippet.title}
-                content={data.items.length}
+                content={0}
               />
             )}
           </span>
         ))}
       </div>
 
-      <div className='flex m-auto w-[78%] mb-11'>
+      {/* <div className='flex m-auto w-[78%] mb-11'>
         <a
           href='#'
           className='mr-3 flex h-10 dark:bg-slate-800 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
@@ -111,7 +111,7 @@ export default function PlayListPage({
             />
           </svg>
         </a>
-      </div>
+      </div> */}
     </main>
   );
 }
