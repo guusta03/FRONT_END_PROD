@@ -31,7 +31,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
               <Link href='/pages/playlists'>Vídeos</Link>
             </li>
             <li>
-              <Link href='/pages/historico'>Histórico de vídeos</Link>
+              <Link href='/pages/history'>Histórico de vídeos</Link>
             </li>
             <li>
               <Link href='/pages/tutorial'>Tutorial</Link>
