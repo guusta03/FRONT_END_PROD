@@ -64,7 +64,7 @@ function LoginForm() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          'https://silly-tan-jersey.cyclic.app/api/create/account',
+          'http://localhost:5000/api/create/account',
           {
             method: 'POST',
             headers: {
@@ -82,7 +82,8 @@ function LoginForm() {
           const data = await response.json();
           if (data && data.body) {
             localStorage.setItem('guga:user', data.body);
-            toast.success('Sua conta foi criada com sucesso.');
+            toast.success('Conta criada com sucesso!');
+
             setHasTokenSaved(true);
           }
         }

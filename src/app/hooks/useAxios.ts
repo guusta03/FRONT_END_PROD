@@ -9,7 +9,7 @@ type AxiosDataType<T> = {
   bodyData?: T;
 };
 
-const useAxios = <T>({ url, method, bodyData }: AxiosDataType<T>) => {
+const useCustomAxios = <T>({ url, method, bodyData }: AxiosDataType<T>) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -36,4 +36,4 @@ const useAxios = <T>({ url, method, bodyData }: AxiosDataType<T>) => {
   return { data, loading, error };
 };
 
-export default useAxios;
+export default useCustomAxios;
