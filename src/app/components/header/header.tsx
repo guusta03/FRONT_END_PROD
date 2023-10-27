@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { Bell, MenuIcon, SunMoon, User } from 'lucide-react';
+import { MenuIcon, SunMoon, User } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 import { useRecoilState } from 'recoil';
@@ -34,7 +34,7 @@ export default function Header({
             : 'bg-white bg-gradient-to-b px-4'
         }`}
       >
-        <div className='m-auto flex w-11/12 items-center justify-end sm:justify-between'>
+        <div className='m-auto flex w-[85%] items-center justify-end sm:justify-between'>
           <ul className='hidden items-center justify-end sm:flex sm:w-96 sm:justify-around'>
             <li>
               <Link href='/pages/playlists'>Vídeos</Link>
@@ -75,7 +75,6 @@ export default function Header({
               </span>
             )}
             <SunMoon className='cursor-pointer' onClick={() => colorTheme()} />
-            <Bell />
           </div>
         </div>
       </header>

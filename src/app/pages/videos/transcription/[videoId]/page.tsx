@@ -60,6 +60,19 @@ export default function VideoPage({
     number | null
   >(null);
 
+  const frasesEmPortugues = [
+    'O sol brilha no céu azul.',
+    'Aprender é uma jornada para a vida toda.',
+    'A natureza é uma fonte infinita de beleza.',
+    'O amor e a amizade são valores preciosos.',
+    'A paciência é uma virtude.',
+    'A música é a linguagem da alma.',
+    'A criatividade floresce na liberdade.',
+    'O conhecimento é poder.',
+    'O sorriso é contagiante.',
+    'A gratidão transforma a vida.',
+  ];
+
   // React.useEffect(() => {
   //   if (data !== null && data.length > 0) {
   //     convertMillisecondsToMinutes();
@@ -169,6 +182,7 @@ export default function VideoPage({
             {data?.body[0].subtitles.en.map((enText, index) => {
               const words = getWordsOnClick(enText.text);
               const isSubtitleHighlighted = currentSubtitleIndex === index;
+
               return (
                 <div
                   key={index}
@@ -199,6 +213,10 @@ export default function VideoPage({
                       </span>
                     </>
                   ))}
+                  {/* Renderize a tradução embaixo da frase transcrita */}
+                  <div className='text-sm text-gray-500'>
+                    {frasesEmPortugues[index]}
+                  </div>
                 </div>
               );
             })}
