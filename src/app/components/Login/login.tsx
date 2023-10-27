@@ -23,7 +23,7 @@ export default function LoginForm() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          'http://localhost:5000/api/create/account',
+          'https://silly-tan-jersey.cyclic.app/api/create/account',
           {
             method: 'POST',
             headers: {
