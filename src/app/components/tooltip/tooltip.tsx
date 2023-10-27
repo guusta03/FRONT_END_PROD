@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { ImGoogle } from 'react-icons/im';
 import { useRecoilState } from 'recoil';
 
-import { hasTokenInLocalStorage } from '@/lib/helper';
+import { getValuesFromocalStorage } from '@/lib/helper';
 
 import { isLogged } from '@/app/state/isLogged';
 
@@ -22,7 +22,7 @@ export default function Tooltip({
   };
 
   React.useEffect(() => {
-    setHasToken(hasTokenInLocalStorage('guga:user'));
+    setHasToken(getValuesFromocalStorage('guga:user'));
   }, []);
 
   return (
@@ -35,13 +35,7 @@ export default function Tooltip({
           }`}
         >
           <div className='rounded-md bg-white p-5 text-xs leading-none text-black shadow-lg'>
-            {show ? (
-              // Se show for verdadeiro, exibir o formulário de login
-              <LoginForm />
-            ) : (
-              // Se show for falso, exibir a mensagem do tooltip
-              message
-            )}
+            {show ? <LoginForm /> : message}
           </div>
           <div className='h-0 w-0 -translate-x-1/2 -translate-y-1 rotate-180 transform border-4 border-b-4 border-l-2 border-r-2 border-t-0 border-solid border-gray-600' />
         </div>
@@ -116,12 +110,9 @@ function LoginForm() {
         id='password'
         name='password'
       />
-      <div className='mt-3 flex h-10 w-[100%] items-center justify-between border-zinc-200 placeholder:text-sm'>
-        <a href=''>Criar uma conta</a>
-        <button
-          onClick={handleButtonClick}
-          className='h-8 rounded-md bg-[#7B7AE4] pl-5 pr-5 text-center text-white'
-        >
+      <div className='mt-3 flex h-10 w-[100%] items-center justify-end border-zinc-200 placeholder:text-sm'>
+        <button onClick={handleButtonClick}>Criar uma conta</button>
+        {/* <button className='h-8 rounded-md bg-[#7B7AE4] pl-5 pr-5 text-center text-white'>
           {!isLoading ? (
             'Entrar'
           ) : (
@@ -145,7 +136,7 @@ function LoginForm() {
               <span className='sr-only'>Loading...</span>
             </div>
           )}
-        </button>
+        </button> */}
       </div>
       <hr />
       <div className='jush-10 mt-3 flex h-5 w-[100%] items-center justify-center border-zinc-200 text-sm placeholder:text-sm'>
