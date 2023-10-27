@@ -213,10 +213,9 @@ export default function VideoPage({
                       </span>
                     </>
                   ))}
-                  {/* Renderize a tradução embaixo da frase transcrita */}
-                  <div className='text-sm text-gray-500'>
+                  {/* <div className='text-sm text-gray-500'>
                     {frasesEmPortugues[index]}
-                  </div>
+                  </div> */}
                 </div>
               );
             })}

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 
-import LoginForm from '@/app/components/LoginTip/login'; // Import the LoginForm component
+import LoginForm from '@/app/components/Login/login'; // Import the LoginForm component
 
 export default function Tooltip({
   message,
