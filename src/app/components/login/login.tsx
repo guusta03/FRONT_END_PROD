@@ -17,7 +17,7 @@ export default function LoginForm() {
 
       try {
         setIsLoading(true);
-        const response = await fetch(`https://tiny-rose-fly-hose.cyclic.app/api/${endpoint}`, {
+        const response = await fetch(`https://silly-tan-jersey.cyclic.app/api/${endpoint}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
