@@ -30,17 +30,14 @@ export default function RootLayout({
   }
   return (
     <RecoilRoot>
-      <html className={`${isDarkTheme === 'dark' ? 'dark' : ''}`}>
-        <body
-          className={`${
-            isDarkTheme === 'dark' ? 'dark:bg-slate-800 dark:text-white' : ''
-          }`}
-        >
+      <html>
+        <body className={`${isDarkTheme === 'dark' ? 'dark dark:bg-[#0F172A] dark:text-white ' : ''}`}>
           <Toaster reverseOrder={false} gutter={8} position='top-right' />
           <Header isDarkTheme={isDarkTheme} colorTheme={colorTheme}>
             {children}
           </Header>
         </body>
+        
       </html>
     </RecoilRoot>
   );

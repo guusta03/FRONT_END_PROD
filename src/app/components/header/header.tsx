@@ -26,11 +26,11 @@ export default function Header({
   const [hasTokenSaved, setHasTokenSaved] = useRecoilState(isLogged);
 
   return (
-    <main className={`${isDarkTheme ? 'dark:bg-slate-800' : ''}`}>
+    <main className='dark dark:bg-[#0F172A] dark:text-white'>
       <header
-        className={`top-0 z-50 flex h-16 w-full items-center justify-between border-b${
+        className={`top-0 z-50 flex h-16 w-full items-center justify-between ${
           isDarkTheme === 'dark'
-            ? 'dark:bg-slate-800'
+            ? 'dark:bg-[#182235] border-solid border-b border-[#334155]'
             : 'bg-white bg-gradient-to-b px-4'
         }`}
       >
@@ -71,7 +71,7 @@ export default function Header({
                   setHasTokenSaved(false);
                 }}
               >
-                Sair
+                logout
               </span>
             )}
             <SunMoon className='cursor-pointer' onClick={() => colorTheme()} />

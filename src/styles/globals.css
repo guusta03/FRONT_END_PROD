@@ -82,7 +82,7 @@
     @apply mx-auto w-11/12;
   }
 
-  .bg-dark a.custom-link {
+  a.custom-link {
     @apply border-gray-200 hover:border-gray-200/0;
   }
 

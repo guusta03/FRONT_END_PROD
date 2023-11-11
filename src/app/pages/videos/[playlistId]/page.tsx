@@ -33,17 +33,20 @@ export default function PlayListPage({
     url: `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=AIzaSyCh9URtblsgUvSx1Ju0eJHzzveCZb-iVME`,
   });
 
-  const handleGetVideId = (id: string) => {
+  const handleGetVideId = (id: string, data: any) => {
     router.push(`transcription/${id}`);
+    console.log(data)
   };
+
+  console.log(data)
 
   return (
     <main>
-      <div className='m-auto mt-10 grid sm:w-[80%] sm:grid-cols-4 lg:max-w-[70%] lg:grid-cols-3'>
+      <div className=' m-auto mb-10 h-[100vh] mt-10 grid max-w-[78.5%] grid-cols-1 md:grid-cols-4 lg:grid-cols-9'>
         {data?.items.map((item: VideoItem, index: number) => (
           <span
             key={index}
-            onClick={() => handleGetVideId(item.snippet.resourceId.videoId)}
+            onClick={() => handleGetVideId(item.snippet.resourceId.videoId, item.snippet)}
           >
             {item.snippet.thumbnails.maxres && (
               <GridCard

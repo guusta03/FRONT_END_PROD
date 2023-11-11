@@ -11,10 +11,10 @@ export default function GridCard({ title, thumb }: GridCardProps) {
   const isDarkMode = localStorage.getItem('theme:guga');
   return (
     <div
-      className={`w-50 delay-20 h-64 cursor-pointer rounded-md p-2 transition ease-in-out ${
+      className={`w-50 delay-20 h-64 cursor-pointer rounded-md p-2 transition ease-in-out text-sm ${
         isDarkMode === 'dark'
           ? 'hover:bg-slate-300 hover:text-white'
-          : 'hover:bg-slate-200 hover:text-black'
+          : 'hover:bg-slate-200 hover:text-black border-[solid 1px #334155]'
       }`}
     >
       <div className='h-36 w-[100%]'>

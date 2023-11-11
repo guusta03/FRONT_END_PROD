@@ -5,6 +5,7 @@
 import { Info, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 import { Button } from '@/components/buttons/Button';
 import TextButton from '@/components/buttons/TextButton';
@@ -74,10 +75,72 @@ export default function VideoPage() {
     router.push(`videos/${id}`);
   };
 
-  function extrairIDdoVideo(url: string) {
+  async function getVideoDataildFromId(videoID: string) {
+    try {
+      const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoID}&format=json`, {
+        method: 'GET'
+      });
+
+      if (response.ok) {
+        const videoDetails = await response.json();
+        return videoDetails;
+      } else {
+        throw new Error('Não foi possível obter os detalhes do vídeo');
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  async function SendVideoDataForSaveHistory(params: any) {
+    try {
+      const token = localStorage.getItem('guga:user');
+      if (!token) {
+        throw new Error("Token not found in local storage");
+      }
+  
+      const response = await fetch('http://localhost:5001/api/video/history', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': token,
+        },
+        body: JSON.stringify(params), 
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+  
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Error sending video data:', error);
+      throw error;
+    }
+  }
+  
+
+  async function extrairIDdoVideo(url: string) {
     const startIndex = url.indexOf('v=');
     if (startIndex !== -1) {
       const videoID = url.substring(startIndex + 2);
+      const dataDeHoje = new Date();
+      const dataFormatada = dataDeHoje.toLocaleDateString();
+      
+      const videDetails = await getVideoDataildFromId(videoID)
+      const hasLogin = localStorage.getItem('guga:user')
+      if(hasLogin) {
+        await SendVideoDataForSaveHistory({
+          videoTitle: videDetails.title,
+          videoId: videoID,
+          thumb: videDetails.thumbnail_url,
+          dateViewed: dataFormatada
+        })
+      }else {
+        return toast.error('Faça login ou crie uma conta antes')
+      }
       router.push(`videos/transcription/${videoID}`);
     } else {
       setYouTubeVideId('');
@@ -100,7 +163,7 @@ export default function VideoPage() {
         </div>
         <div className='m-auto flex max-w-[70.5%] sm:items-center lg:w-[60%]'>
           <input
-            className='mr-2 h-10 w-[100%] rounded border border-b-2 border-gray-300 text-left outline-0'
+            className='mr-2 h-10 w-[100%] dark:text-black rounded border border-b-2 border-gray-300 text-left outline-0'
             title='search youtube videos'
             placeholder='https://www.youtube.com/watch?v=zb7GSB_GQ-0'
             value={youtubeURL}

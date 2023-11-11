@@ -2,60 +2,61 @@ import React from 'react';
 import { useRef } from 'react';
 import toast from 'react-hot-toast';
 import { ImGoogle } from 'react-icons/im';
-import { useRecoilState } from 'recoil';
 
 import logger from '@/lib/logger';
-
-import { isLogged } from '@/app/state/isLogged';
 
 export default function LoginForm() {
   const mailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
-  const [hasTokenSaved, setHasTokenSaved] = useRecoilState(isLogged);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [showForm, setShowForm] = React.useState(false);
 
-  const handleButtonClick = async () => {
+  const handleAccountAction = async (endpoint: string, successMessage: string) => {
     if (mailRef.current && passwordRef.current) {
       const email = mailRef.current.value;
       const password = passwordRef.current.value;
 
       try {
         setIsLoading(true);
-        const response = await fetch(
-          'https://silly-tan-jersey.cyclic.app/api/create/account',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: 'guga',
-              email: email,
-              password: password,
-            }),
-          }
-        );
+        const response = await fetch(`https://tiny-rose-fly-hose.cyclic.app/api/${endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        });
 
         if (response.ok) {
           const data = await response.json();
           if (data && data.body) {
             localStorage.setItem('guga:user', data.body);
-            toast.success('Conta criada com sucesso!');
-
-            setHasTokenSaved(true);
+            toast.success(successMessage);
           }
         }
         if (response.status === 400) {
-          toast.error('Verique todos os campos.');
+          toast.error('Verifique todos os campos.');
         }
-      } catch (erro) {
-        logger('Ocorreu um erro:', erro as any);
+        if(response.status === 409) {
+          toast.error('O usuário com o e-mail fornecido já existe')
+        }
+      } catch (error) {
+        logger('Ocorreu um erro:', error as string);
       } finally {
         setIsLoading(false);
       }
     }
   };
+
+  const handleButtonClick = () => {
+    handleAccountAction('create/account', 'Conta criada com sucesso!');
+  };
+
+  const handleAccountLogin = () => {
+    handleAccountAction('account/login', 'Logado com sucesso!');
+  };
+
 
   return (
     <main>
@@ -76,9 +77,10 @@ export default function LoginForm() {
           id='password'
           name='password'
         />
-        <div className='mt-3 flex h-10 w-[100%] items-center justify-end border-zinc-200 placeholder:text-sm'>
+        <div className='mt-3 flex h-10 w-[100%] items-center justify-between border-zinc-200 placeholder:text-sm'>
           <button onClick={handleButtonClick}>Criar uma conta</button>
-          {/* <button className='h-8 rounded-md bg-[#7B7AE4] pl-5 pr-5 text-center text-white'>
+
+          <button onClick={handleAccountLogin} className='h-8 rounded-md bg-[#7B7AE4] pl-5 pr-5 text-center text-white'>
            {!isLoading ? (
              'Entrar'
            ) : (
@@ -102,14 +104,15 @@ export default function LoginForm() {
                <span className='sr-only'>Loading...</span>
              </div>
            )}
-         </button> */}
+         </button>
         </div>
         <hr />
         <div className='jush-10 mt-3 flex h-5 w-[100%] items-center justify-center border-zinc-200 text-sm placeholder:text-sm'>
           <ImGoogle />
-          <p className='ml-6'>Entrar com google</p>
+          <button disabled className='ml-6'>Entrar com google</button>
         </div>
       </div>
     </main>
   );
 }
+

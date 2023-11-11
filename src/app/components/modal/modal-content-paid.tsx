@@ -53,7 +53,7 @@ export default function ModalContentPaid({ state, closeModal }: ModalProps) {
 
                   <div className='mt-2'>
                     <p className='text-sm text-gray-500'>
-                      Infelizmente esse recurso é pago. Por 19,90 por mês você
+                      Esse recurso é pago. Por 19,90 por mês você
                       pode ter acesso a tradução das transcrições e outros
                       recursos
                       <br></br>

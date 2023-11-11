@@ -51,7 +51,7 @@ export default function VideoPage({
     setIsPlaying(true);
   }
 
-  const { data } = useAxios<TranscriptionData>({
+  const { data, error } = useAxios<TranscriptionData>({
     method: 'GET',
     url: `https://silly-tan-jersey.cyclic.app/api/transcription/video/${videoId}`,
   });
@@ -60,18 +60,12 @@ export default function VideoPage({
     number | null
   >(null);
 
-  const frasesEmPortugues = [
-    'O sol brilha no céu azul.',
-    'Aprender é uma jornada para a vida toda.',
-    'A natureza é uma fonte infinita de beleza.',
-    'O amor e a amizade são valores preciosos.',
-    'A paciência é uma virtude.',
-    'A música é a linguagem da alma.',
-    'A criatividade floresce na liberdade.',
-    'O conhecimento é poder.',
-    'O sorriso é contagiante.',
-    'A gratidão transforma a vida.',
-  ];
+  if(error) {
+    return <h5 className='mt-48 h-[66vh] text-center'>Erro ao transcrever o video verifique se há legendas ativada</h5>
+  }
+
+  // const frasesEmPortugues = []
+  
 
   // React.useEffect(() => {
   //   if (data !== null && data.length > 0) {
@@ -145,7 +139,7 @@ export default function VideoPage({
   };
 
   return (
-    <main className='m-w-[100%] m-auto'>
+    <main className='m-w-[100%] h-[100vh] m-auto'>
       <div className='m-auto mt-4 max-w-[83%]'>
         <div className='m-auto flex max-w-[95%] justify-between'>
           <h3 className='text-lg'>{data?.body[0].title}</h3>
@@ -157,18 +151,19 @@ export default function VideoPage({
             <RiTranslate2 />
           </span>
         </div>
-        <div className='m-auto mb-10 mt-4 flex h-[80vh] max-w-[100%] justify-center rounded-md sm:flex-col md:flex-row'>
+        <div className='m-auto mb-10 mt-4 flex h-[80vh] justify-center rounded-md sm:flex-col md:flex-row'>
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${videoId}`}
             playing={isPlaying}
             playbackRate={playbackRateVideo}
             controls
+            width={620}
             height={400}
             onProgress={handleVideoProgress}
             ref={PlayerRef}
           />
 
-          <div className='ml-8 h-[vh] max-w-[100%] cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 p-3 sm:mt-5 sm:flex-col md:mt-0 md:flex-row'>
+          <div className='ml-8 text-md dark:text-gray-500 h-[95%] cursor-pointer overflow-auto rounded-md border-[0.5px] border-gray-300 pl-5 pr-5 pt-4 sm:mt-5 sm:flex-col md:mt-0 md:flex-row'>
             <Modal
               state={modalState.state}
               closeModal={closeModal}
@@ -187,14 +182,13 @@ export default function VideoPage({
                 <div
                   key={index}
                   onClick={() => handleSeekMouseClick(enText.start)}
-                  className={`rounded-[2px] p-1 ${
-                    isSubtitleHighlighted ? 'bg-[#DBEAFE]' : ''
-                  }`}
+                  className={`rounded-[2px] p-1 ${isSubtitleHighlighted ? 'bg-[#DBEAFE]' : ''
+                    }`}
                 >
                   {timeArray.map((item, index) => (
                     <span
                       key={index}
-                      className='bg-[#798FC2] p-[3px] text-sm text-white'
+                      className='bg-[#798FC2] p-[3px] text-sm text-[#F5F5F5]'
                     >
                       {item}
                     </span>
