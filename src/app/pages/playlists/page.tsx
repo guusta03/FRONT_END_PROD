@@ -100,7 +100,7 @@ export default function VideoPage() {
         throw new Error("Token not found in local storage");
       }
   
-      const response = await fetch('http://localhost:5001/api/video/history', {
+      const response = await fetch('https://silly-tan-jersey.cyclic.app/api/video/history', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
