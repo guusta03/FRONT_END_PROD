@@ -139,7 +139,7 @@ export default function VideoPage() {
           dateViewed: dataFormatada
         })
       }else {
-        return toast.error('Faça login ou crie uma conta antes')
+        return toast.error('Login necessário. Crie uma conta se ainda não tiver.')
       }
       router.push(`videos/transcription/${videoID}`);
     } else {
