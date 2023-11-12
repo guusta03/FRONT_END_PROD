@@ -39,7 +39,7 @@ export default function UserHistory() {
       }
 
       const response = await fetch(
-        'https://tiny-rose-fly-hose.cyclic.app/api/videos/all/history/654a76385c6417c8b0e9b982',
+        'https://silly-tan-jersey.cyclic.app/api/videos/all/history/654a76385c6417c8b0e9b982',
         {
           method: 'GET',
           headers: {

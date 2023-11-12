@@ -6,7 +6,7 @@ import { OnProgressProps } from 'react-player/base';
 
 import Modal from '@/app/components/modal/modal';
 import ModalContentInBuilding from '@/app/components/modal/modal-content-buildin';
-import useAxios from '@/app/hooks/useAxios';
+import useCustomAxios from '@/app/hooks/useAxios';
 
 interface VideoTranscriptionProps {
   start: string;
@@ -51,9 +51,9 @@ export default function VideoPage({
     setIsPlaying(true);
   }
 
-  const { data, error } = useAxios<TranscriptionData>({
+  const { data, error } = useCustomAxios<TranscriptionData>({
     method: 'GET',
-    url: `http://localhost:5001/api/transcription/video/${videoId}`,
+    url: `https://silly-tan-jersey.cyclic.app/api/transcription/video/${videoId}`,
   });
 
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = React.useState<
