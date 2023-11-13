@@ -26,7 +26,7 @@ export default function Header({
   const [hasTokenSaved, setHasTokenSaved] = useRecoilState(isLogged);
 
   return (
-    <main className='dark dark:bg-[#0F172A] dark:text-white'>
+    <main className='dark dark:bg-[#0F172A] h-auto dark:text-white'>
       <header
         className={`top-0 z-50 flex h-16 w-full items-center justify-between ${
           isDarkTheme === 'dark'
@@ -40,7 +40,7 @@ export default function Header({
               <Link href='/pages/playlists'>Vídeos</Link>
             </li>
             <li>
-              <Link href='/pages/history'>Histórico de vídeos</Link>
+              <Link href='/pages/videos/history?page=1'>Histórico de vídeos</Link>
             </li>
             <li>
               <Link href='/pages/tutorial'>Tutorial</Link>

@@ -17,16 +17,17 @@ export default function GridCard({ title, thumb }: GridCardProps) {
           : 'hover:bg-slate-200 hover:text-black border-[solid 1px #334155]'
       }`}
     >
-      <div className='h-36 w-[100%]'>
+      <div className='h-auto w-[100%] lg:w-auto'>
         <Image
           src={thumb}
-          className='h-36 w-[100%] rounded-md'
+          className='h-36 rounded-md'
           alt={title}
-          width={900}
-          height={900}
+          layout="responsive"
+          width={700}
+          height={600} 
         />
       </div>
-      <p className='text-start'>{title}</p>
+      <p className='text-start mt-2'>{title}</p>
     </div>
   );
 }

@@ -139,7 +139,7 @@ export default function VideoPage({
   };
 
   return (
-    <main className='m-w-[100%] h-[100vh] m-auto'>
+    <main className='m-w-[100%] h-auto m-auto'>
       <div className='m-auto mt-4 max-w-[83%]'>
         <div className='m-auto flex max-w-[95%] justify-between'>
           <h3 className='text-lg'>{data?.body[0].title}</h3>

@@ -42,7 +42,7 @@ export default function PlayListPage({
 
   return (
     <main>
-      <div className=' m-auto mb-10 h-[100vh] mt-10 grid max-w-[78.5%] grid-cols-1 md:grid-cols-4 lg:grid-cols-9'>
+      <div className=' m-auto mb-10 h-[100vh] mt-10 grid max-w-[78.5%] grid-cols-1 md:grid-cols-4 lg:grid-cols-5'>
         {data?.items.map((item: VideoItem, index: number) => (
           <span
             key={index}
