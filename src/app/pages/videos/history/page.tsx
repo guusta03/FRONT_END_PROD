@@ -89,7 +89,7 @@ export default function UserHistory() {
       }
 
       return result;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error fetching video data:', error.message);
       throw error;
     }
