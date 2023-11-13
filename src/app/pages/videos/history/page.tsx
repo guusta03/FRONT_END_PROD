@@ -68,7 +68,7 @@ export default function UserHistory() {
       }
 
       const response = await fetch(
-        `https://silly-tan-jersey.cyclic.app/api/all/history/pages?page=${page}&pageSize=5`,
+        `https://silly-tan-jersey.cyclic.app/api/videos/all/history/pages?page=${page}&pageSize=5`,
         {
           method: 'GET',
           headers: {
