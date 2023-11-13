@@ -116,7 +116,7 @@ export default function UserHistory() {
 
       {hasLogin && videoData.body && videoData.body.length > 0 && (
         <>
-          <div className='m-auto mt-10 max-w-[78.5%]'>
+          <div className='m-auto mb-5 mt-10 max-w-[78.5%]'>
             <h3>Vídeos visto recentemente</h3>
           </div>
           <div className='h-80vh mb-330 m-auto grid max-w-[78%] lg:grid-cols-5'>
