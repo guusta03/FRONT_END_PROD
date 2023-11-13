@@ -51,7 +51,7 @@ export default function UserHistory() {
       const response = await getAllVideosHistoryFromAPI(newPageParam);
       setVideoData(response);
       router.push(`?page=${newPageParam}`);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error fetching video data:', error.message);
     }
   };
