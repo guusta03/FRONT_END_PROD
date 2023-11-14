@@ -31,7 +31,7 @@ export default function GridCard({ title, thumb, contentType }: GridCardProps) {
       </div>
       <p className='mt-2 text-start'>{title}</p>
       {contentType ? (
-        <p className='mt-4 flex dark:text-black rounded-sm w-[35%] items-center justify-center bg-slate-200 text-center'>
+        <p className='mt-4 flex dark:text-black rounded-sm w-[35%] items-center justify-center bg-[#DBEAFE] text-center'>
           {contentType}
           <RiPlayList2Fill width={15} className='ml-2' />
         </p>

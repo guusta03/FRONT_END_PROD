@@ -16,7 +16,6 @@ export default function LoginForm() {
       const password = passwordRef.current.value;
 
       try {
-        setIsLoading(true);
         const response = await fetch(`https://silly-tan-jersey.cyclic.app/api/${endpoint}`, {
           method: 'POST',
           headers: {
@@ -36,7 +35,7 @@ export default function LoginForm() {
           }
         }
         if (response.status === 400) {
-          toast.error('Verifique todos os campos.');
+          toast.error('Por favor, verifique se preencheu todos os campos necessários');
         }
         if(response.status === 409) {
           toast.error('O usuário com o e-mail fornecido já existe')
