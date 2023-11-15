@@ -115,7 +115,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                         <option value='Devagar'>Devagar 0.5x</option>
                       </select>
                       <TextButton onClick={() => speakWordModal()}>
-                        Falar
+                        Ouvir
                       </TextButton>
                     </div>
                   </span>
