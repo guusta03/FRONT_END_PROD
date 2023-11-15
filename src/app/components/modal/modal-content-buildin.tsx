@@ -45,9 +45,7 @@ export default function Modal({ state, closeModal, word }: ModalProps) {
                         Ops... funcionalidade em desenvolvimento. 🏗️
                       </h3>
                       <p>
-                        Vocẽ está usando uma demo do nosso software. Ainda
-                        estamos trabalhando pra oferecer todo nossos recursos em
-                        breve.
+                      Estamos aprimorando essa funcionalidade para tornar sua experiência ainda melhor. Em breve, teremos novidades para compartilhar!"
                       </p>
                     </div>
                   </span>
