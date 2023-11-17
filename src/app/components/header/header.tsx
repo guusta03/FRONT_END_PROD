@@ -40,7 +40,7 @@ export default function Header({
               <Link href='/pages/playlists'>Vídeos</Link>
             </li>
             <li>
-              <Link href='/pages/videos/history?page=1'>Histórico de vídeos</Link>
+              <Link href='/pages/videos/historical?page=1'>Histórico de vídeos</Link>
             </li>
             <li>
               <Link href='/pages/tutorial'>Tutorial</Link>
