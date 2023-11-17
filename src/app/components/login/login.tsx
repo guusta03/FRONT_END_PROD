@@ -106,10 +106,6 @@ export default function LoginForm() {
          </button>
         </div>
         <hr />
-        <div className='jush-10 mt-3 flex h-5 w-[100%] items-center justify-center border-zinc-200 text-sm placeholder:text-sm'>
-          <ImGoogle />
-          <button disabled className='ml-6'>Entrar com google</button>
-        </div>
       </div>
     </main>
   );
