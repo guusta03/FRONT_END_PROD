@@ -16,7 +16,7 @@ export default function LoginForm() {
       const password = passwordRef.current.value;
 
       try {
-        const response = await fetch(`https://silly-tan-jersey.cyclic.app/api/${endpoint}`, {
+        const response = await fetch(`https://telling-api-168x.onrender.com/api/${endpoint}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
