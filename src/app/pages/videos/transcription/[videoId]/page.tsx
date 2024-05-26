@@ -53,7 +53,7 @@ export default function VideoPage({
 
   const { data, error } = useCustomAxios<TranscriptionData>({
     method: 'GET',
-    url: `https://silly-tan-jersey.cyclic.app/api/transcription/video/${videoId}`,
+    url: `https://telling-api-168x.onrender.com/api/transcription/video/${videoId}`,
   });
 
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = React.useState<
